@@ -18,7 +18,7 @@ client = commands.Bot(command_prefix='$')
 pokemon = {
     "1": {"name": "bulbasaur", 
         "type": ["grass", "venom"], 
-        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+        "image": "images/bulbasaur.png"
         }
 }   
 
