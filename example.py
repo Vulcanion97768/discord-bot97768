@@ -18,10 +18,9 @@ client = commands.Bot(command_prefix='$')
 pokemon = {
     "1": {"name": "bulbasaur", 
         "type": ["grass", "venom"], 
-        "image": "images/bulbasaur.png"
+        "image": "images\\bulbasaur.png"
         }
 }   
-
 
 
 @client.event
