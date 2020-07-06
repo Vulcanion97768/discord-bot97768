@@ -15,6 +15,14 @@ voice_channel_id = 6827599854695874734
 
 client = commands.Bot(command_prefix='$')
 
+pokemon = {
+    "1": {"name": "bulbasaur", 
+        "type": ["grass", "venom"], 
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+        }
+}   
+
+
 
 @client.event
 async def on_ready():
@@ -75,6 +83,12 @@ async def test(ctx):
 async def users(ctx):
     id_1 = client.get_guild(server_id)
     await ctx.send(f"# of members: {id_1.member_count}")
+
+@client.command()
+async def bulbasaur(ctx):
+    await ctx.send(pokemon["1"]["name"])
+    await ctx.send(pokemon["1"]["type"])
+    await ctx.send(file=discord.File(pokemon["1"]["image"]))
 
 
 client.run(token)
