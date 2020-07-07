@@ -16,10 +16,13 @@ voice_channel_id = 6827599854695874734
 client = commands.Bot(command_prefix='$')
 
 pokemon = {
-    "1": {"name": "bulbasaur", 
-        "type": ["grass", "venom"], 
-        "image": "images\\bulbasaur.png"
-        }
+    1: {"name": "bulbasaur", 
+        "type": "grass", 
+        "image": "pokemon\\1.png"
+        },
+    2: {"name": "tu cola",
+        "type": "Tu jefa", 
+        "image": "Tu culo"},
 }   
 
 
@@ -85,9 +88,13 @@ async def users(ctx):
 
 @client.command()
 async def bulbasaur(ctx):
-    await ctx.send(pokemon["1"]["name"])
-    await ctx.send(pokemon["1"]["type"])
-    await ctx.send(file=discord.File(pokemon["1"]["image"]))
+    embed1 = discord.Embed(
+        title="Title", 
+        description="This is a description"
+    )
+    embed1.set_image(file=discord.File(pokemon[1]["image"]))
 
+    await ctx.send(embed=embed1)
+    
 
 client.run(token)
