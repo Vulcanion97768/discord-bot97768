@@ -1,30 +1,14 @@
 import discord
 from discord.ext import commands
-from discord import VoiceClient
+import requests
+from id_info import ids
+from pokemon_dictionary import dict
+from id_info import ids
+from message_counter import MessageCounter
 
-token = "NzE2ODU0MzU2ODg0MDYyMjc5.Xu8S8Q.gjM7S79ZDLmoWaVY75rgtJjrThE"
-client_id = 716854356884062279
-yisus = 439656238897430529
-arlan = 485988534784622593
-victor = 434856194952396800
-luis = 395608543744753674
-lore = 328645836072288256
-angel = 409941082806157312
-server_id = 682759984932847715
-voice_channel_id = 6827599854695874734
 
 client = commands.Bot(command_prefix='$')
-
-pokemon = {
-    1: {"name": "bulbasaur", 
-        "type": "grass", 
-        "image": "pokemon\\1.png"
-        },
-    2: {"name": "tu cola",
-        "type": "Tu jefa", 
-        "image": "Tu culo"},
-}   
-
+message_counter = MessageCounter()
 
 @client.event
 async def on_ready():
@@ -36,12 +20,11 @@ async def on_ready():
 async def on_message(message):
     """When someone sends a message, performs a series of actions 
     dending of various conditions"""
-    # Makes sure we get the number of users
-    id = client.get_guild(server_id)
-
     # So the bot cannot respond to itself
     if message.author == client.user:
         return
+
+    message_counter.add_to_count()
 
     # Message.content.find return a -1 if message isn't found in the content
     if message.content.find("hello") != -1:
@@ -56,45 +39,39 @@ async def on_message(message):
         await message.channel.send(file=discord.File("caca.png"))
 
     # Checks if the id of whoever sent the message corresponds to a certain user
-    elif message.author.id == luis:
+    elif message.author.id == ids["luis"]:
         if message.content.startswith("!"):
             pass
         else:
             await message.channel.send("Chinga tu cola Luis")
-    elif message.author.id == victor:
+    elif message.author.id == ids["victor"]:
         if message.content.startswith("!"):
             pass
         else:
             await message.channel.send("Chinga tu cola victor")
 
-    elif message.content == "#users":
-        await message.channel.send(f"# of Members: {id.member_count}")
+    if message_counter.message_count == 10:
+        message_counter.reset_count()
+        await message.channel.send("puta")
+        
 
     # Makes sure that the command decorator is run
     await client.process_commands(message)
 
 
-# Simple test decorator used to check if commands work
-@client.command()
-async def test(ctx):
-    print("Hello world")
-
-
 # Way to get the number of users in a server
 @client.command()
 async def users(ctx):
-    id_1 = client.get_guild(server_id)
+    id_1 = client.get_guild(ids["server_id"])
     await ctx.send(f"# of members: {id_1.member_count}")
 
+# Sends the image of any pokemon along with its name    
 @client.command()
-async def bulbasaur(ctx):
-    embed1 = discord.Embed(
-        title="Title", 
-        description="This is a description"
+async def image(ctx, arg):
+    embed = discord.Embed(
+        title = str(dict[int(arg)]["name"])
     )
-    embed1.set_image(file=discord.File(pokemon[1]["image"]))
+    embed.set_image(url=dict[int(arg)]["image"])
+    await ctx.send(embed=embed)
 
-    await ctx.send(embed=embed1)
-    
-
-client.run(token)
+client.run(ids["token"])
