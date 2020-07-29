@@ -1,0 +1,107 @@
+{
+    "users": {
+        "485988534784622593": [
+            {
+                "name": "Emboar",
+                "type1": "fire",
+                "lvl": 37,
+                "exp": 40725,
+                "selected": true,
+                "hp_iv": 17,
+                "atk_iv": 8,
+                "def_iv": 26,
+                "speed_iv": 2,
+                "spatk_iv": 23,
+                "spdef_iv": 0,
+                "nature": "Careful",
+                "type2": "fighting"
+            },
+            {
+                "name": "Darkrai",
+                "type1": "dark",
+                "lvl": 100,
+                "exp": 100390,
+                "selected": false,
+                "hp_iv": 12,
+                "atk_iv": 18,
+                "def_iv": 18,
+                "speed_iv": 29,
+                "spatk_iv": 25,
+                "spdef_iv": 10,
+                "nature": "Calm"
+            },
+            {
+                "name": "Servine",
+                "type1": "grass",
+                "lvl": 1,
+                "exp": 40,
+                "selected": false,
+                "hp_iv": 7,
+                "atk_iv": 28,
+                "def_iv": 25,
+                "speed_iv": 8,
+                "spatk_iv": 1,
+                "spdef_iv": 5,
+                "nature": "Hardy"
+            },
+            {
+                "name": "Unown",
+                "type1": "psychic",
+                "lvl": 1,
+                "exp": 0,
+                "selected": false,
+                "hp_iv": 11,
+                "atk_iv": 11,
+                "def_iv": 7,
+                "speed_iv": 6,
+                "spatk_iv": 14,
+                "spdef_iv": 24,
+                "nature": "Serious"
+            },
+            {
+                "name": "Blastoise",
+                "type1": "water",
+                "lvl": 43,
+                "exp": 79507,
+                "selected": false,
+                "hp_iv": 21,
+                "atk_iv": 2,
+                "def_iv": 1,
+                "speed_iv": 10,
+                "spatk_iv": 2,
+                "spdef_iv": 8,
+                "nature": "Calm"
+            },
+            {
+                "name": "Emboar",
+                "type1": "fire",
+                "type2": "fighting",
+                "lvl": 3,
+                "exp": 21,
+                "selected": false,
+                "hp_iv": 21,
+                "atk_iv": 11,
+                "def_iv": 7,
+                "speed_iv": 28,
+                "spatk_iv": 26,
+                "spdef_iv": 1,
+                "nature": "Quirky"
+            },
+            {
+                "name": "Ho-Oh",
+                "type1": "fire",
+                "type2": "flying",
+                "lvl": 11,
+                "exp": 1064,
+                "selected": false,
+                "hp_iv": 11,
+                "atk_iv": 1,
+                "def_iv": 18,
+                "speed_iv": 11,
+                "spatk_iv": 16,
+                "spdef_iv": 18,
+                "nature": "Gentle"
+            }
+        ]
+    }
+}
