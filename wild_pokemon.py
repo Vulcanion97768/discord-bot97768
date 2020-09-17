@@ -1,5 +1,6 @@
 import discord
 from random import choice, randint
+import requests
 from pokemon_dictionary import pokemon_dict
 
 
@@ -7,14 +8,18 @@ class WildPokemon:
     def __init__(self):
         self.num_list = [x for x in range(1, 722)]
         self.random_num = randint(1, 721 )
-        self.natures = ["Hardy", "Lonely", "Brave", "Adamant", "Naughty", "Bold",
-        "Docile", "Relaxed", "Impish", "Lax", "Timid", "Hasty", "Serious", "Jolly", 
-        "Naive", "Modest", "Mild", "Quiet", "Bashful", "Rash", "Calm", "Gentle", 
-        "Sassy", "Careful", "Quirky"]
+        self.natures = ["Hardy", "Lonely", "Brave", "Adamant", "Naughty", 
+        "Bold", "Docile", "Relaxed", "Impish", "Lax", "Timid", "Hasty", 
+        "Serious", "Jolly", "Naive", "Modest", "Mild", "Quiet", "Bashful", 
+        "Rash", "Calm", "Gentle", "Sassy", "Careful", "Quirky"]
 
     def make_pokemon(self):
         self.image = pokemon_dict[self.random_num]["image"]
         self.pokemon = pokemon_dict[self.random_num]["name"]
+        if self.pokemon == "Nidoran♀":
+            self.pokemon = "Nidoran-f"
+        if self.pokemon == "Nidoran♂":
+            self.pokemon == "Nidoran-m"
         self.type1 = pokemon_dict[self.random_num]["type1"]
         if "type2" in pokemon_dict[self.random_num]:
             self.type2 = pokemon_dict[self.random_num]["type2"]
@@ -26,6 +31,10 @@ class WildPokemon:
         self.spdef_iv = choice([x for x in range(0, 31)])
         self.nature = choice(self.natures)
         self.lvl = randint(1, 35)
+        url = f"https://pokeapi.co/api/v2/pokemon-species/{self.random_num}/"
+        r = requests.get(url)
+        response_dict = r.json()
+        self.happiness = response_dict["base_happiness"]
         
     def make_embedded_pokemon(self):
         self.embed = discord.Embed(
